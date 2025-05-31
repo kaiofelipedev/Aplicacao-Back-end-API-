@@ -9,10 +9,11 @@
 const Express = require('express')
 const cors    = require('cors')
 
+// Import de arquivos
+const servidor = require('./server/boot.js')
+
 // Instância do módulo 'Express'
 const app = Express()
 
 // Teste de conexão
-app.listen(8080, () => {
-    console.log('Servidor rodando na porta 8080...')
-})
+servidor.Start(app)
