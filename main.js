@@ -16,4 +16,5 @@ const servidor = require('./server/boot.js')
 const app = Express()
 
 // Teste de conexão
-servidor.Start(app)
+// servidor.Start(app)
+servidor(app)

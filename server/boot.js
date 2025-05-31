@@ -5,11 +5,18 @@
  *  Versão: 1.0
  **************************************************************/
 
-const Start = function(app){
+// const Start = function(app){
+//     app.set('port', 8080)
+//     app.listen(app.get('port'), () => {
+//         console.log(`Servidor rodando em http://localhost:8080 ...`)
+//     })
+// }
+
+// module.exports = { Start }
+
+module.exports = (app) => {
     app.set('port', 8080)
     app.listen(app.get('port'), () => {
         console.log(`Servidor rodando em http://localhost:8080 ...`)
     })
 }
-
-module.exports = { Start }
