@@ -10,6 +10,20 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+// Tabela de personagens
+model Personagens {
+  id              Int         @id  @default(autoincrement())
+  nome            String
+  apelido         String
+  biografia       String
+  dataCriacao     DateTime
+  localNasc       String
+  descVestimenta  String
+  foto            String
+  especie         String
+  nomeCriador     String
 }
