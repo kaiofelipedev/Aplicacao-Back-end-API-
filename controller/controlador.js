@@ -63,6 +63,40 @@ const insertNew = async function(personagem){
 }
 
 
+// Função PUT: atualiza um registro existente
+const atualizarPersonagem = async function(idRegistro, dados){
+
+    // Validação do ID
+    if(idRegistro == '' || idRegistro == null || idRegistro == undefined || isNaN(idRegistro)) {
+        return MESSAGE.BAD_REQUEST
+    } else {
+
+        // Validação dos dados enviados
+        let statusDados = true
+        Object.values(dados).forEach(elemento => {
+            if(elemento == '') {
+                statusDados = false
+            }
+        })
+
+        if(statusDados == false) {
+            return MESSAGE.BAD_REQUEST
+        } else {
+            dados.id = idRegistro
+
+            // Envia para o Banco de dados
+            let consulta = await database.updateRegistro(dados)
+
+            // Tratamento para a saída do recurso
+            if(consulta == false) {
+                return MESSAGE.NOT_FOUND
+            } else {
+                return MESSAGE.OK
+            }
+        }
+    }
+}
+
 
 // Exportação das funções
-module.exports = { allPersonagens, insertNew }
+module.exports = { allPersonagens, insertNew, atualizarPersonagem }

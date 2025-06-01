@@ -54,6 +54,27 @@ app.post('/v1/api-desenhos/personagem',
     }
 )
 
+
+// PUT: atualizar um registro existente
+app.put('/v1/api-desenhos/personagem/:id',
+    cors( {origin: '*', methods: 'PUT'} ), bodyParserJson,
+    async (req, res) => {
+
+        // Armazena o ID inserido pelo usuário
+        let idRegistro = req.params.id
+
+        // Armazena os dados enviados no body da requisição
+        let dados = req.body
+
+        // Encaminha os dados para a controller e guarda a rsposta
+        let saida = await controller.atualizarPersonagem(idRegistro, dados)
+
+        // Resposta para o usuário
+        res.status(saida.statusCode)
+        res.json(saida)
+    }
+)
+
 // Teste de conexão
 // servidor.Start(app)
 servidor(app)

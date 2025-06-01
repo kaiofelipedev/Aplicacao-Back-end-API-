@@ -53,5 +53,27 @@ const insertNewRegistro = async function(personagem){
 }
 
 
+// Função que atualiza um registro existente. PUT
+const updateRegistro = async function(dados){
+
+    // Comando SQL
+    let sql = `UPDATE personagens SET nome = '${dados.nome}', apelido = '${dados.apelido}', 
+    biografia = '${dados.biografia}', dataCriacao = '${dados.dataCriacao}', 
+    localNasc = '${dados.localNasc}', descVestimenta = '${dados.descVestimenta}', 
+    foto = '${dados.foto}', especie = '${dados.especie}', nomeCriador = '${dados.nomeCriador}' 
+    WHERE id = ${dados.id}`
+
+    // Executa o comando SQL e guarda uma resposta
+    let sqlResult = await prisma.$executeRawUnsafe(sql)
+
+    // Tratamento
+    if(sqlResult) {
+        return true
+    } else {
+        return false
+    }
+}
+
+
 // Exportação das funções
-module.exports = { selectAll, insertNewRegistro }
+module.exports = { selectAll, insertNewRegistro, updateRegistro }
