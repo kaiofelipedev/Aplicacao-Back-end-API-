@@ -20,7 +20,7 @@ model Personagens {
   nome            String
   apelido         String
   biografia       String
-  dataCriacao     DateTime
+  dataCriacao     String
   localNasc       String
   descVestimenta  String
   foto            String
