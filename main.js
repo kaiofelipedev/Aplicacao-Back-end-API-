@@ -5,20 +5,22 @@
  *  Versão: 1.0
  **************************************************************/
 
-// Import dos módulos 'express' e 'cors'
-const Express = require('express')
-const cors    = require('cors')
+// Import dos módulos 'express', 'cors' e 'body-parser
+const Express    = require('express')
+const cors       = require('cors')
+const bodyParser = require('body-parser')
 
 // Import de arquivos
 const servidor   = require('./server/boot.js')
 const controller = require('./controller/controlador.js')
 
-// Instância do módulo 'Express'
+// Instância do módulo 'Express' e 'bodyParser'
 const app = Express()
+const bodyParserJson = bodyParser.json()
 
 // EndPoints
 
-// GET: retorna todos os registros
+// GET: retorna todos os registros // OK
 app.get('/v1/api-desenhos/personagem',
     cors( {origin: '*', methods: 'GET'} ),
     async (req, res) => {
@@ -27,6 +29,25 @@ app.get('/v1/api-desenhos/personagem',
         let saida = await controller.allPersonagens()
 
         // Resposta da API
+        app.set('json spaces', 2)
+        res.status(saida.statusCode)
+        res.json(saida)
+    }
+)
+
+
+// POST: inserir um novo registro // OK
+app.post('/v1/api-desenhos/personagem',
+    cors({origin: '*', methods: 'POST'}), bodyParserJson,
+    async (req, res) => {
+
+        // Variável que recebe os dados do body da requisição
+        let personagem = req.body
+
+        // Aciona o controller
+        let saida = await controller.insertNew(personagem)
+
+        // Resposta para o usuário
         app.set('json spaces', 2)
         res.status(saida.statusCode)
         res.json(saida)
