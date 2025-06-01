@@ -63,7 +63,7 @@ const insertNew = async function(personagem){
 }
 
 
-// Função PUT: atualiza um registro existente
+// Função PUT: atualiza um registro existente // OK
 const atualizarPersonagem = async function(idRegistro, dados){
 
     // Validação do ID

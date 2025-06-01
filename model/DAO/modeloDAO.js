@@ -53,7 +53,7 @@ const insertNewRegistro = async function(personagem){
 }
 
 
-// Função que atualiza um registro existente. PUT
+// Função que atualiza um registro existente. PUT // OK
 const updateRegistro = async function(dados){
 
     // Comando SQL

@@ -55,7 +55,7 @@ app.post('/v1/api-desenhos/personagem',
 )
 
 
-// PUT: atualizar um registro existente
+// PUT: atualizar um registro existente // OK
 app.put('/v1/api-desenhos/personagem/:id',
     cors( {origin: '*', methods: 'PUT'} ), bodyParserJson,
     async (req, res) => {
@@ -70,6 +70,7 @@ app.put('/v1/api-desenhos/personagem/:id',
         let saida = await controller.atualizarPersonagem(idRegistro, dados)
 
         // Resposta para o usuário
+        app.set('json spaces', 2)
         res.status(saida.statusCode)
         res.json(saida)
     }
