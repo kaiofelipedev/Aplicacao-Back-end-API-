@@ -75,5 +75,23 @@ const updateRegistro = async function(dados){
 }
 
 
+// Função que exclui um registro existente. DELETE // OK
+const deleteRegistro = async function(userId){
+
+    // Comando SQL
+    let sql = `DELETE FROM personagens WHERE id = ${userId}`
+
+    // Executa o comando e armazena uma resposta
+    let sqlResult = await prisma.$executeRawUnsafe(sql)
+
+    // Tratamento
+    if(sqlResult) {
+        return true
+    } else {
+        return false
+    }
+}
+
+
 // Exportação das funções
-module.exports = { selectAll, insertNewRegistro, updateRegistro }
+module.exports = { selectAll, insertNewRegistro, updateRegistro, deleteRegistro }

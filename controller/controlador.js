@@ -98,5 +98,29 @@ const atualizarPersonagem = async function(idRegistro, dados){
 }
 
 
+// Função DELETE: exclui um registro existente // OK
+const excluirPersonagem = async function(userId){
+
+    // Validação do ID passado pelo usuário
+    if(userId == '' || userId == null || userId == undefined || isNaN(userId)){
+        return MESSAGE.BAD_REQUEST
+    } else {
+
+        // Encaminha para o banco de dados e obtem uma resposta
+        let responseBd = await database.deleteRegistro(userId)
+
+        // Tratamento para saída do recurso
+        if(responseBd == false) {
+            return MESSAGE.NOT_FOUND
+        } else {
+            return recurso = {
+                statusCode: 200,
+                message: 'Registro deletado com sucesso!'
+            }
+        }
+    }
+}
+
+
 // Exportação das funções
-module.exports = { allPersonagens, insertNew, atualizarPersonagem }
+module.exports = { allPersonagens, insertNew, atualizarPersonagem, excluirPersonagem }

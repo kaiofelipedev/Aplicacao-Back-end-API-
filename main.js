@@ -76,6 +76,24 @@ app.put('/v1/api-desenhos/personagem/:id',
     }
 )
 
+
+// DELETE: exclui um registro existente // OK
+app.delete('/v1/api-desenhos/personagem/:id', 
+    cors( {origin: '*', methods: 'DELETE'} ), 
+    async (req, res) => {
+
+        // Guarda o ID passado pelo usuário
+        let userId = req.params.id
+
+        // Encaminha para a controller
+        let saida = await controller.excluirPersonagem(userId)
+
+        // Saída da API
+        res.status(saida.statusCode)
+        res.json(saida)
+    }
+)
+
 // Teste de conexão
 // servidor.Start(app)
 servidor(app)
