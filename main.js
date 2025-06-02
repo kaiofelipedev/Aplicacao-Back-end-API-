@@ -95,5 +95,4 @@ app.delete('/v1/api-desenhos/personagem/:id',
 )
 
 // Teste de conexão
-// servidor.Start(app)
 servidor(app)
