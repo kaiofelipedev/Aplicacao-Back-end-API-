@@ -94,5 +94,5 @@ app.delete('/v1/api-desenhos/personagem/:id',
     }
 )
 
-// Teste de conexão
+// Inicia o servidor
 servidor(app)
