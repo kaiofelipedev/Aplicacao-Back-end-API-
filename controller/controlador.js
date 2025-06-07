@@ -3,6 +3,7 @@
  *  Criação: 30/05/2025
  *  Autor: Kaio Felipe
  *  Versão: 1.0
+<<<<<<< HEAD
  **************************************************************/
 
 // Import do arquivo de consulta ao banco 'DAO' e arquivo de satatus code
@@ -124,3 +125,6 @@ const excluirPersonagem = async function(userId){
 
 // Exportação das funções
 module.exports = { allPersonagens, insertNew, atualizarPersonagem, excluirPersonagem }
+=======
+ **************************************************************/
+>>>>>>> 0b905ee (Estruturação da arquitetuta MVC.31/05/2025)
